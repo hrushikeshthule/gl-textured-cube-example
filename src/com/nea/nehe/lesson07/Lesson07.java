@@ -57,7 +57,7 @@ public class Lesson07 extends GLSurfaceView implements Renderer {
 	private int filter = 0;				//Which texture filter? ( NEW )
 	
 	/** Is light enabled ( NEW ) */
-	private boolean light = false;
+	private boolean light = true;
 
 	/* 
 	 * The initial light values for ambient and diffuse
