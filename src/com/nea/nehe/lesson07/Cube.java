@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
@@ -30,7 +32,7 @@ public class Cube {
 	/** The buffer holding the texture coordinates */
 	private FloatBuffer textureBuffer;
 	/** The buffer holding the indices */
-	private ByteBuffer indexBuffer;
+	private ShortBuffer indexBuffer;
 	/** The buffer holding the normals */
 	private FloatBuffer normalBuffer;
 
@@ -268,7 +270,7 @@ public class Cube {
 									};
 
 	/** The initial indices definition */
-	private byte indices[] = {
+	private short indices[] = {
 						// Faces definition
 			0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,11 ,12 ,13 ,14 ,15 ,16 ,17 ,18 ,19 ,20 ,21 ,22 ,23 ,24 ,25 ,26 ,27 ,28 ,29 ,30 ,31 ,32 ,33 ,34 ,35
 
@@ -313,7 +315,9 @@ public class Cube {
 		normalBuffer.position(0);
 
 		//
-		indexBuffer = ByteBuffer.allocateDirect(indices.length);
+		byteBuf = ByteBuffer.allocateDirect(indices.length * 4);
+		byteBuf.order(ByteOrder.nativeOrder());
+		indexBuffer = byteBuf.asShortBuffer();
 		indexBuffer.put(indices);
 		indexBuffer.position(0);
 	}
@@ -344,7 +348,7 @@ public class Cube {
 		gl.glNormalPointer(GL10.GL_FLOAT, 0, normalBuffer);
 		
 		//Draw the vertices as triangles, based on the Index Buffer information
-		gl.glDrawElements(GL10.GL_TRIANGLES, indices.length, GL10.GL_UNSIGNED_BYTE, indexBuffer);
+		gl.glDrawElements(GL10.GL_TRIANGLES, indices.length, GL10.GL_UNSIGNED_SHORT, indexBuffer);
 		
 		//Disable the client state before leaving
 		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
