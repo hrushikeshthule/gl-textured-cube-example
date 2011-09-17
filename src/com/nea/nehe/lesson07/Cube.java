@@ -17,12 +17,12 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
 
 /**
- * This class is an object representation of 
+ * This class is an object representation of
  * a Cube containing the vertex information,
  * texture coordinates, the vertex indices
- * and drawing functionality, which is called 
+ * and drawing functionality, which is called
  * by the renderer.
- *  
+ *
  * @author Savas Ziplies (nea/INsanityDesign)
  */
 public class Cube {
@@ -39,257 +39,27 @@ public class Cube {
 	/** Our texture pointer */
 	private int[] textures = new int[3];
 
-	/** The initial vertex definition */	
-	private float vertices[] = {
-						//Vertices according to faces
-			1.0000004768371582f,0.999999463558197f,1.0f,
-			1.0f,0.9999999403953552f,-1.0f,
-			-0.9999996423721313f,1.0000003576278687f,-1.0f,
-			1.0000004768371582f,0.999999463558197f,1.0f,
-			-0.9999996423721313f,1.0000003576278687f,-1.0f,
-			-0.9999999403953552f,1.0f,1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			-1.0000003576278687f,-0.9999996423721313f,1.0f,
-			-0.9999999403953552f,1.0f,1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			-0.9999999403953552f,1.0f,1.0f,
-			-0.9999996423721313f,1.0000003576278687f,-1.0f,
-			1.0f,-1.0f,-1.0f,
-			0.9999993443489075f,-1.0000005960464478f,1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			0.9999993443489075f,-1.0000005960464478f,1.0f,
-			-1.0000003576278687f,-0.9999996423721313f,1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			1.0f,0.9999999403953552f,-1.0f,
-			1.0000004768371582f,0.999999463558197f,1.0f,
-			1.0f,-1.0f,-1.0f,
-			1.0000004768371582f,0.999999463558197f,1.0f,
-			0.9999993443489075f,-1.0000005960464478f,1.0f,
-			1.0f,-1.0f,-1.0f,
-			1.0000004768371582f,0.999999463558197f,1.0f,
-			-0.9999999403953552f,1.0f,1.0f,
-			0.9999993443489075f,-1.0000005960464478f,1.0f,
-			-0.9999999403953552f,1.0f,1.0f,
-			-1.0000003576278687f,-0.9999996423721313f,1.0f,
-			0.9999993443489075f,-1.0000005960464478f,1.0f,
-			1.0f,0.9999999403953552f,-1.0f,
-			1.0f,-1.0f,-1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			1.0f,0.9999999403953552f,-1.0f,
-			-1.0000001192092896f,-0.9999998211860657f,-1.0f,
-			-0.9999996423721313f,1.0000003576278687f,-1.0f,
-
-
-
-
-
-//						-1.0f, -1.0f, 1.0f, //v0
-//						1.0f, -1.0f, 1.0f, 	//v1
-//						-1.0f, 1.0f, 1.0f, 	//v2
-//						1.0f, 1.0f, 1.0f, 	//v3
-//			
-//						1.0f, -1.0f, 1.0f, 	// ...
-//						1.0f, -1.0f, -1.0f, 
-//						1.0f, 1.0f, 1.0f, 
-//						1.0f, 1.0f, -1.0f,
-//			
-//						1.0f, -1.0f, -1.0f, 
-//						-1.0f, -1.0f, -1.0f, 
-//						1.0f, 1.0f, -1.0f, 
-//						-1.0f, 1.0f, -1.0f,
-//			
-//						-1.0f, -1.0f, -1.0f, 
-//						-1.0f, -1.0f, 1.0f, 
-//						-1.0f, 1.0f, -1.0f, 
-//						-1.0f, 1.0f, 1.0f,
-//			
-//						-1.0f, -1.0f, -1.0f, 
-//						1.0f, -1.0f, -1.0f, 
-//						-1.0f, -1.0f, 1.0f, 
-//						1.0f, -1.0f, 1.0f,
-//			
-//						-1.0f, 1.0f, 1.0f, 
-//						1.0f, 1.0f, 1.0f, 
-//						-1.0f, 1.0f, -1.0f, 
-//						1.0f, 1.0f, -1.0f, 
-											};
-
-	/** 
-	 * The initial normals for the lighting calculations 
-	 * 
-	 * The normals are not necessarily correct from a 
+	/** The initial vertex definition */
+	private float vertices[] = { /* ここに頂点 */ };
+	/**
+	 * The initial normals for the lighting calculations
+	 *
+	 * The normals are not necessarily correct from a
 	 * real world perspective, as I am too lazy to write
 	 * these all on my own. But you get the idea and see
 	 * what I mean if you run the demo.
-	 */	
-	private float normals[] = {
-						// Normals
-			0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,-0.5773491859436035f,-0.5773491859436035f,
-			-0.5773491859436035f,0.5773491859436035f,-0.5773491859436035f,
+	 */
+	private float normals[] = { /* ここに法線 */ };
 
-
-
-
-//						0.0f, 0.0f, 1.0f, 						
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f, 
-//						
-//						0.0f, 0.0f, 1.0f, 
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f,
-//						
-//						0.0f, 0.0f, 1.0f, 
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f,
-//						
-//						0.0f, 0.0f, 1.0f, 
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f,
-//						
-//						0.0f, 0.0f, 1.0f, 
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f,
-//						
-//						0.0f, 0.0f, 1.0f, 
-//						0.0f, 0.0f, -1.0f, 
-//						0.0f, 1.0f, 0.0f, 
-//						0.0f, -1.0f, 0.0f,
-											};
-
-	/** The initial texture coordinates (u, v) */	
-	private float texture[] = {
-						//Mapping coordinates for the vertices
-			0.0f,0.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,0.0f,
-			0.0f,1.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,0.0f,
-			0.0f,1.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,0.0f,
-			0.0f,1.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,0.0f,
-			1.0f,1.0f,
-			0.0f,1.0f,
-
-
-
-
-//						0.0f, 0.0f, 
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f, 
-//						1.0f, 1.0f,
-//			
-//						0.0f, 0.0f,
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f,
-//						1.0f, 1.0f,
-//			
-//						0.0f, 0.0f, 
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f, 
-//						1.0f, 1.0f,
-//			
-//						0.0f, 0.0f, 
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f, 
-//						1.0f, 1.0f,
-//			
-//						0.0f, 0.0f, 
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f, 
-//						1.0f, 1.0f,
-//			
-//						0.0f, 0.0f, 
-//						0.0f, 1.0f, 
-//						1.0f, 0.0f, 
-//						1.0f, 1.0f, 
-									};
+	/** The initial texture coordinates (u, v) */
+	private float texture[] = { /* ここに UV */ };
 
 	/** The initial indices definition */
-	private short indices[] = {
-						// Faces definition
-			0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,11 ,12 ,13 ,14 ,15 ,16 ,17 ,18 ,19 ,20 ,21 ,22 ,23 ,24 ,25 ,26 ,27 ,28 ,29 ,30 ,31 ,32 ,33 ,34 ,35
-
-
-			
-
-
-
-//						0, 1, 3, 0, 3, 2, 		// Face front
-//						4, 5, 7, 4, 7, 6, 		// Face right
-//						8, 9, 11, 8, 11, 10, 	// ...
-//						12, 13, 15, 12, 15, 14, 
-//						16, 17, 19, 16, 19, 18, 
-//						20, 21, 23, 20, 23, 22, 
-												};
+	private short indices[] = { /* ここに書き順 */ };
 
 	/**
 	 * The Cube constructor.
-	 * 
+	 *
 	 * Initiate the buffers.
 	 */
 	public Cube() {
@@ -326,7 +96,7 @@ public class Cube {
 	 * The object own drawing function.
 	 * Called from the renderer to redraw this instance
 	 * with possible changes in values.
-	 * 
+	 *
 	 * @param gl - The GL Context
 	 * @param filter - Which texture filter to be used
 	 */
@@ -341,15 +111,15 @@ public class Cube {
 
 		//Set the face rotation
 		gl.glFrontFace(GL10.GL_CCW);
-		
+
 		//Point to our buffers
 		gl.glVertexPointer(3, GL10.GL_FLOAT, 0, vertexBuffer);
 		gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, textureBuffer);
 		gl.glNormalPointer(GL10.GL_FLOAT, 0, normalBuffer);
-		
+
 		//Draw the vertices as triangles, based on the Index Buffer information
 		gl.glDrawElements(GL10.GL_TRIANGLES, indices.length, GL10.GL_UNSIGNED_SHORT, indexBuffer);
-		
+
 		//Disable the client state before leaving
 		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
@@ -358,13 +128,13 @@ public class Cube {
 
 	/**
 	 * Load the textures
-	 * 
+	 *
 	 * @param gl - The GL Context
 	 * @param context - The Activity context
 	 */
 	public void loadGLTexture(GL10 gl, Context context) {
 		//Get the texture from the Android resource directory
-		InputStream is = context.getResources().openRawResource(R.drawable.crate);
+		InputStream is = context.getResources().openRawResource(R.drawable.mutan_mini);
 		Bitmap bitmap = null;
 		try {
 			//BitmapFactory is an Android graphics utility for images
@@ -401,30 +171,30 @@ public class Cube {
 		/*
 		 * This is a change to the original tutorial, as buildMipMap does not exist anymore
 		 * in the Android SDK.
-		 * 
+		 *
 		 * We check if the GL context is version 1.1 and generate MipMaps by flag.
 		 * Otherwise we call our own buildMipMap implementation
 		 */
 		if(gl instanceof GL11) {
 			gl.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_GENERATE_MIPMAP, GL11.GL_TRUE);
 			GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
-			
-		//
+
+			//
 		} else {
 			buildMipmap(gl, bitmap);
-		}		
-		
+		}
+
 		//Clean up
 		bitmap.recycle();
 	}
-	
+
 	/**
 	 * Our own MipMap generation implementation.
 	 * Scale the original bitmap down, always by factor two,
 	 * and set it as new mipmap level.
-	 * 
+	 *
 	 * Thanks to Mike Miller (with minor changes)!
-	 * 
+	 *
 	 * @param gl - The GL Context
 	 * @param bitmap - The bitmap to mipmap
 	 */
@@ -439,7 +209,7 @@ public class Cube {
 		while(height >= 1 || width >= 1) {
 			//First of all, generate the texture from our bitmap and set it to the according level
 			GLUtils.texImage2D(GL10.GL_TEXTURE_2D, level, bitmap, 0);
-			
+
 			//
 			if(height == 1 || width == 1) {
 				break;
@@ -452,7 +222,7 @@ public class Cube {
 			height /= 2;
 			width /= 2;
 			Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, width, height, true);
-			
+
 			//Clean up
 			bitmap.recycle();
 			bitmap = bitmap2;
